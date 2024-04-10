@@ -1,5 +1,10 @@
-@media screen and (max-width: 428px) {
+@media screen and (max-width: 768px) {
   .logo {
-    width: 30%;
+    width: 210%;
+  }
+}
+@media screen and (max-width: 376px) {
+  .logo {
+    width: 120%;
   }
 }

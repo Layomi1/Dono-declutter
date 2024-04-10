@@ -1,12 +1,20 @@
+import { bannerImages } from "../../utilities/banner.js";
+import BannerImageSlide from "../BannerImageSlide/BannerImageSlide";
 import styles from "./Hero.module.css";
 
-const Hero = () => {
+export default function Hero() {
   return (
-    <div className={styles.hero}>
+    <section className={styles.hero}>
       <h1>Declutter Market for New and Used Items</h1>
-      <div></div>
-    </div>
+      <div>
+        <BannerImageSlide images={bannerImages} />
+      </div>
+      <p>
+        DonoDeclutter envisions creating a cleaner, more organized, and socially
+        responsible society, where transitioning individuals can effortlessly
+        manage their belongings, contributing to a sustainable cycle of use and
+        reuse.
+      </p>
+    </section>
   );
-};
-
-export default Hero;
+}

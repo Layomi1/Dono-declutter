@@ -1,8 +1,9 @@
-import Logo from "../Logo/logo";
+import { useState } from "react";
+
 import styles from "./SecondaryNavbar.module.css";
 import search_icon from "../../assets/search_icon.svg";
 import CustomButton from "../CustomButton/CustomButton";
-import { useState } from "react";
+import Logo from "../Logo/Logo";
 import question_icon from "../../assets/question_icon.svg";
 
 const SecondaryNavbar = () => {
@@ -11,13 +12,13 @@ const SecondaryNavbar = () => {
   function handleSearch(e) {
     e.preventDefault();
     setSearch("");
-    console.log("submit");
   }
+
   return (
     <div className={styles["navbar-two"]}>
-      {/* <div className={styles["logo-container"]}> */}
-      <Logo />
-      {/* </div> */}
+      <div>
+        <Logo />
+      </div>
 
       <form onSubmit={handleSearch}>
         <div className={styles.input}>

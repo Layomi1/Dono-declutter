@@ -1,20 +1,22 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 :root {
-  --app-padding: 0 103px;
+  --app-padding: 0 105px 50px 105px;
   --heading-one: 2.5rem;
+  --heading-two: 2rem;
+  --button-size: 1.5rem;
+  --regular-size: 1rem;
+  --p-size: 1.125rem;
+  --font-one: "Inter", sans-serif;
+  --button-font: "Manrope", sans-serif;
+  --header-font: "Plus Jakarta Sans", sans-serif;
 }
 body {
   margin: 0;
@@ -22,6 +24,7 @@ body {
   min-height: 100vh;
   overflow-x: none;
   font-size: 16px;
+  font-family: var(--font-one), sans-serif;
 }
 
 li {
@@ -33,14 +36,65 @@ a {
 
 h1 {
   font-size: var(--heading-one);
+  font-family: var(--header-font);
+  font-family: var(--header-font);
 }
 
+h2 {
+  font-size: var(--heading-two);
+  font-family: var(--header-font);
+}
+
+p {
+  font-size: var(--regular-size);
+}
 section {
   padding: var(--app-padding);
 }
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+
+.big-btn {
+  font-size: var(--button-size);
+  width: 278px;
+  height: 72px;
+  font-weight: 700;
+}
+.small-btn {
+  width: 221px;
+  height: 61px;
+  font-size: var(--regular-size);
+  font-weight: 600;
+  font-family: var(--button-font);
+}
+@media screen and (max-width: 1204px) {
+  section {
+    padding: 0 100px;
+  }
+}
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 22px;
+  }
+  h2 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .big-btn {
+    font-size: var(--regular-size);
+    width: 258px;
+    height: 72px;
+    font-weight: 700;
+  }
+  section {
+    padding: 0 50px;
+  }
+}
+
+@media screen and (max-width: 376px) {
+  section {
+    padding: 0 30px;
   }
 }

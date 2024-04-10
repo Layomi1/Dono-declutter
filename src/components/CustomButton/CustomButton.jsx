@@ -4,14 +4,24 @@ const CustomButton = ({ type, buttonStyle, text, onClick }) => {
     teal: "btn-teal",
   };
   const className = classNames[type] || classNames.btn;
-
-  return onClick ? (
-    <button className={`${className} ${buttonStyle}`}>{text}</button>
-  ) : (
-    <a href="#" className={`${className} ${buttonStyle}`}>
+  const ButtonComponent = onClick ? "button" : "a";
+  return (
+    <ButtonComponent
+      to="#" // This will be ignored if ButtonComponent is 'button'
+      className={`${className} ${buttonStyle}`}
+      onClick={onClick} // This will be ignored if ButtonComponent is 'a'
+    >
       {text}
-    </a>
+    </ButtonComponent>
   );
 };
+// return onClick ? (
+//   <button className={`${className} ${buttonStyle}`}>{text}</button>
+// ) : (
+//   <a href="#" className={`${className} ${buttonStyle}`}>
+//     {text}
+//   </a>
+// );
+// };
 
 export default CustomButton;
