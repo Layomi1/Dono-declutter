@@ -2,18 +2,44 @@ import CustomButton from "../CustomButton/CustomButton";
 import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
 import { RiMenuLine } from "react-icons/ri";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const Navbar = () => {
-  const [toggle, setToggle] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openNote, setIsOpenNote] = useState(false);
+
+  function toggleMenu() {
+    setIsMenuOpen(!isMenuOpen);
+  }
+
+  function showNote() {
+    setIsOpenNote(!openNote);
+  }
+
+  const noteListRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (noteListRef.current && !noteListRef.contains(e.target)) {
+        setIsOpenNote(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.addEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className={styles.navbar}>
-      <button className={styles.menu}>
-        <RiMenuLine onClick={() => setToggle(!toggle)} />
-      </button>
-      {toggle && (
-        <div className={styles["nav-lists"]}>
+      <ul
+        className={`${styles["nav-lists"]} ${
+          isMenuOpen ? styles["show-menu"] : styles[""]
+        }`}
+      >
+        <li>
           <Link to="/sell">
             <CustomButton
               type="orange"
@@ -22,7 +48,9 @@ const Navbar = () => {
               buttonStyle={styles["sell-btn"]}
             />
           </Link>
+        </li>
 
+        <li>
           <Link to="/donate">
             <CustomButton
               type="orange"
@@ -30,7 +58,9 @@ const Navbar = () => {
               buttonStyle={styles["donate-btn"]}
             />
           </Link>
+        </li>
 
+        <li>
           <Link to="/login">
             <CustomButton
               type="teal"
@@ -38,7 +68,9 @@ const Navbar = () => {
               buttonStyle={styles["login-btn"]}
             />
           </Link>
+        </li>
 
+        <li>
           <Link to="/account">
             <CustomButton
               type="teal"
@@ -46,8 +78,11 @@ const Navbar = () => {
               buttonStyle={styles["account-btn"]}
             />
           </Link>
-        </div>
-      )}
+        </li>
+      </ul>
+
+      {/* menu icon */}
+      <RiMenuLine className={styles.menu} onClick={toggleMenu} />
 
       <div className={styles["nav-icons"]}>
         <Link to="/add-to-cart" className={styles.basket}>
@@ -71,18 +106,38 @@ const Navbar = () => {
         </Link>
 
         {/* bell */}
-        <svg
-          width="43"
-          height="44"
-          viewBox="0 0 43 44"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M43 36.5H0V32.5H2.15V18.562C2.15 8.586 10.8145 0.5 21.5 0.5C32.1855 0.5 40.85 8.586 40.85 18.562V32.5H43V36.5ZM6.45 32.5H36.55V18.562C36.55 10.796 29.8119 4.5 21.5 4.5C13.1881 4.5 6.45 10.796 6.45 18.562V32.5ZM16.125 38.5H26.875C26.875 39.8261 26.3087 41.0979 25.3007 42.0355C24.2927 42.9732 22.9255 43.5 21.5 43.5C20.0745 43.5 18.7073 42.9732 17.6993 42.0355C16.6913 41.0979 16.125 39.8261 16.125 38.5Z"
-            fill="black"
-          />
-        </svg>
+        <div>
+          <svg
+            className={styles.notify}
+            onClick={showNote}
+            width="43"
+            height="44"
+            viewBox="0 0 43 44"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M43 36.5H0V32.5H2.15V18.562C2.15 8.586 10.8145 0.5 21.5 0.5C32.1855 0.5 40.85 8.586 40.85 18.562V32.5H43V36.5ZM6.45 32.5H36.55V18.562C36.55 10.796 29.8119 4.5 21.5 4.5C13.1881 4.5 6.45 10.796 6.45 18.562V32.5ZM16.125 38.5H26.875C26.875 39.8261 26.3087 41.0979 25.3007 42.0355C24.2927 42.9732 22.9255 43.5 21.5 43.5C20.0745 43.5 18.7073 42.9732 17.6993 42.0355C16.6913 41.0979 16.125 39.8261 16.125 38.5Z"
+              fill="black"
+            />
+          </svg>
+          <span className={styles.note}>
+            <ul
+              ref={noteListRef}
+              className={`${styles["note-lists"]} ${
+                openNote ? styles["show-menu"] : styles[""]
+              }`}
+            >
+              <li>Your Ad is under review</li>
+              <li>Your Ad has been approved</li>
+              <li>100 people viewed your ad</li>
+              <li>
+                Congratulation on your sale! Payment is frozen for 24 hours
+              </li>
+              <li>Payment has been made into your bank account</li>
+            </ul>
+          </span>
+        </div>
       </div>
     </div>
   );
