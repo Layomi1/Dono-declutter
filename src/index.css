@@ -11,6 +11,8 @@
   --app-padding: 0 105px 50px 105px;
   --heading-one: 2.5rem;
   --heading-two: 2rem;
+  --heading-three: 1.5rem;
+  --heading-four: 1.25rem;
   --button-size: 1.5rem;
   --p-size: 1.125rem;
   --regular-size: 1rem;
@@ -18,6 +20,10 @@
   --font-one: "Inter", sans-serif;
   --button-font: "Manrope", sans-serif;
   --header-font: "Plus Jakarta Sans", sans-serif;
+
+  /****** colors ****/
+
+  --steel-blue-color: #96c3d7;
 }
 body {
   margin: 0;
@@ -46,6 +52,15 @@ h2 {
   font-family: var(--header-font);
 }
 
+h3 {
+  font-size: var(--heading-three);
+  font-family: var(--header-font);
+}
+
+h4 {
+  font-size: var(--heading-four);
+  font-family: var(--header-font);
+}
 p {
   font-size: var(--regular-size);
 }
@@ -58,14 +73,18 @@ section {
   width: 278px;
   height: 72px;
   font-weight: 700;
+  cursor: pointer;
 }
+
 .small-btn {
   width: 221px;
   height: 61px;
   font-size: var(--regular-size);
   font-weight: 600;
   font-family: var(--button-font);
+  cursor: pointer;
 }
+
 @media screen and (max-width: 1204px) {
   section {
     padding: 0 100px;

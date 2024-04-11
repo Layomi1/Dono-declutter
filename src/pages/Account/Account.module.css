@@ -1,0 +1,182 @@
+.account {
+  text-align: center;
+  min-height: 100vh;
+  margin-top: 70px;
+}
+
+.account .header {
+  text-decoration: underline;
+}
+
+.account .content {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  padding: var(--app-padding);
+}
+
+.account-left,
+.account-right-top {
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  background-color: #fff;
+  border: 1px solid #3c5a82;
+  text-align: left;
+  width: 100%;
+  display: flex;
+}
+
+.account-left {
+  max-width: 292px;
+  height: 358px;
+  gap: 10px;
+}
+.account-left ul {
+  width: 100%;
+}
+.account-left ul li {
+  padding: 10px 15px;
+  display: flex;
+  gap: 50px;
+  height: 56px;
+  align-items: center;
+  font-size: var(--small-sixe);
+}
+
+.account-left ul li img {
+  width: 28px;
+  height: 20.51px;
+}
+.account-left ul li:active {
+  background-color: var(--steel-blue-color);
+}
+
+/* middle content */
+.account-middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 427px;
+  max-width: 400px;
+  text-align: center;
+  align-items: center;
+  margin-left: 100px;
+}
+
+.account-middle input[type="image"] {
+  width: 100%;
+  max-width: 303px;
+  height: 240px;
+  border: 1px solid #3c5a82;
+}
+
+/* password */
+.account-middle .password {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.account-middle input[type="password"] {
+  height: 54px;
+  border: 1px solid #3c5a82;
+  outline: none;
+  padding: 20px;
+}
+
+.password label {
+  font-size: var(--heading-three);
+  font-family: var(--button-font);
+  font-weight: 600;
+}
+/* middle content ends */
+
+.account-right {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  border: none;
+  text-align: center;
+}
+
+.account-right-top {
+  width: 100%;
+  height: 427px;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 20px;
+}
+
+.account-right .group {
+  margin: 10px 0;
+}
+
+.account-right h3 {
+  color: #3c5a82;
+}
+
+.account-right-top h2,
+.account-right-top h3 {
+  font-weight: 600;
+  color: #000;
+}
+.account-right .group h4 {
+  font-weight: 400;
+}
+
+.account-right h4 {
+  font-weight: 500;
+}
+.submit {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+.big-btn {
+  width: 278px;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 1204px) {
+  .account-middle .password {
+    width: 90%;
+  }
+  .account-middle {
+    margin-left: 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .account .content {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+  }
+
+  .account-middle .password {
+    width: 100%;
+  }
+  .account-middle {
+    margin-left: 0px;
+  }
+}
+
+@media screen and (max-width: 376px) {
+  .account-left {
+    width: 292px;
+  }
+
+  .account-middle {
+    width: 292px;
+  }
+  .account-right {
+    width: 292px;
+  }
+  .account-right-top {
+    padding: 10px;
+  }
+}
