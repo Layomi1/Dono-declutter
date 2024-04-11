@@ -61,6 +61,34 @@ span.count {
   height: 43px;
 }
 
+.note .note-lists {
+  position: absolute;
+  top: 0px;
+  /* right: 0; */
+  width: 480px;
+  height: auto;
+  border: 2px solid #3c5a82;
+  display: none;
+  padding: 30px;
+  background-color: #fff;
+  z-index: 1;
+  /* right: 0; */
+}
+.note .note-lists li {
+  font-size: var(--button-font);
+  font-size: var(--small-size);
+  border-bottom: 1px solid #000;
+  padding-bottom: 2px;
+  text-wrap: nowrap;
+  line-height: 24px;
+  margin: 30px 0;
+  font-weight: 400;
+}
+
+.show-note {
+  right: 2%;
+}
+
 @media screen and (max-width: 1204px) {
   .navbar {
     gap: 30px;
@@ -76,6 +104,12 @@ span.count {
 
   .nav-icons {
     gap: 30px;
+  }
+  .note ul {
+    width: 400px;
+  }
+  .note ul li {
+    text-wrap: wrap;
   }
 }
 @media screen and (max-width: 768px) {
@@ -96,30 +130,27 @@ span.count {
 
   .nav-lists {
     position: absolute;
-    display: flex;
-    flex-direction: column;
+    display: block;
     left: 0;
     top: 80px;
-    align-items: start;
     background-color: #96c3d7;
-    gap: 20px;
     width: 45%;
-    height: 70vh;
+    height: 60vh;
     padding: 0 50px;
     margin-top: 20px;
     z-index: 10;
+    transition: 0.5s;
     transform: translateX(-100%);
   }
-
-  .show {
-    transform: translateX(100%);
-  }
   .nav-lists li {
-    gap: 15px;
-    text-wrap: nowrap;
-    background: transparent;
+    margin: 20px 0;
   }
-
+  .show-menu {
+    transform: translateX(0%);
+  }
+  .hide-menu {
+    transform: translateX(-50%);
+  }
   .nav-lists li:first-child {
     margin-top: 15px;
   }
@@ -130,6 +161,13 @@ span.count {
   .nav-icons {
     gap: 30px;
   }
+
+  .note ul {
+    width: 300px;
+  }
+  .note ul li {
+    text-wrap: wrap;
+  }
 }
 
 @media screen and (max-width: 376px) {
@@ -138,19 +176,15 @@ span.count {
   }
 
   .nav-lists {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    left: 0;
-    top: 80px;
-    align-items: start;
-    background-color: #96c3d7;
-    gap: 20px;
     width: 100%;
-    height: 60vh;
-    padding: 0 20px;
-    margin-top: 20px;
-    /* z-index: 10; */
-    /* display: none; */
+    padding: 0 25px;
+  }
+
+  .show-menu {
+    transform: translateX(0%);
+  }
+
+  .note ul {
+    width: 250px;
   }
 }

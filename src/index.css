@@ -12,8 +12,9 @@
   --heading-one: 2.5rem;
   --heading-two: 2rem;
   --button-size: 1.5rem;
-  --regular-size: 1rem;
   --p-size: 1.125rem;
+  --regular-size: 1rem;
+  --small-size: 0.875rem;
   --font-one: "Inter", sans-serif;
   --button-font: "Manrope", sans-serif;
   --header-font: "Plus Jakarta Sans", sans-serif;

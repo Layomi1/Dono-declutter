@@ -78,7 +78,7 @@ form input[type="search"] {
 
 @media screen and (max-width: 768px) {
   .navbar-two {
-    grid-template-columns: 60px 430px auto;
+    grid-template-columns: 50px 430px auto;
     padding: 32px 20px 32px 20px;
   }
 
@@ -102,7 +102,7 @@ form input[type="search"] {
 
 @media screen and (max-width: 376px) {
   .navbar-two {
-    grid-template-columns: 70px 240px auto;
+    grid-template-columns: 60px 240px;
     padding: 32px 20px 32px 20px;
   }
 

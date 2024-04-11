@@ -53,6 +53,7 @@ const ProductList = () => {
                 thumbnail={item.thumbnail}
                 title={item.title}
                 price={item.price}
+                className={styles.item}
               />
             ))
           : null}
