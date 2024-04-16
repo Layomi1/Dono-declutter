@@ -1,42 +1,45 @@
-// import { ProductContext } from "../../Context/ProductContext";
+import { ProductContext } from "../../Context/ProductContext";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import styles from "./Product.module.css";
 // import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import notice from "../../assets/notice.svg";
 
 const Product = () => {
-  // const { product } = useContext(ProductContext);
-  const [loading, setLoading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState(null);
-  const [product, setProduct] = useState([]);
+  const { products } = useContext(ProductContext);
+  const product = products.find((e) => {
+    e.id === Number(product.id);
+  });
+  // const [loading, setLoading] = useState(false);
+  // const [errorMsg, setErrorMsg] = useState(null);
+  // const [product, setProduct] = useState([]);
 
-  async function fetchProduct() {
-    try {
-      setLoading(true);
-      const response = await fetch("https://dummyjson.com/products/id");
-      const result = await response.json();
-      if (result && result.product) {
-        setProduct(result.product);
-        setLoading(false);
-      }
-      console.log(result);
-    } catch (e) {
-      setErrorMsg(e.message);
-    }
-  }
-  useEffect(() => {
-    fetchProduct();
-  }, []);
+  // async function fetchProduct() {
+  //   try {
+  //     setLoading(true);
+  //     const response = await fetch("https://dummyjson.com/products/id");
+  //     const result = await response.json();
+  //     if (result && result.product) {
+  //       setProduct(result.product);
+  //       setLoading(false);
+  //     }
+  //     console.log(result);
+  //   } catch (e) {
+  //     setErrorMsg(e.message);
+  //   }
+  // }
+  // useEffect(() => {
+  //   fetchProduct();
+  // }, []);
 
-  if (loading) {
-    return <div>Loading data ! Please wait</div>;
-  }
+  // if (loading) {
+  //   return <div>Loading data ! Please wait</div>;
+  // }
 
-  if (errorMsg) {
-    return <div>Umnable to fetch data!</div>;
-  }
-  console.log(product);
+  // if (errorMsg) {
+  //   return <div>Umnable to fetch data!</div>;
+  // }
+  // console.log(product);
   // let navigate = useNavigate();
   // function handleCart() {
   // navigate("/add-to-cart");
@@ -72,7 +75,7 @@ const Product = () => {
       </div>
       <div className="image-array">
         {product.images.map((item, index) => {
-          <img key={index} src={item.thumbnail} alt={`Image ${index}`} />;
+          <img key={item.id} src={item.thumbnail} alt={`Image ${index}`} />;
         })}
       </div>
       <div className={styles["product-bottom"]}>

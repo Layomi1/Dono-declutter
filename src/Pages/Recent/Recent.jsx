@@ -9,8 +9,9 @@ const Recent = () => {
 
       <main>
         <AccountOptions />
-        <div className={styles.display}></div>
-        <Item />
+        <div className={styles.display}>
+          <Item />
+        </div>
       </main>
     </section>
   );
