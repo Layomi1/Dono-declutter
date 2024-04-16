@@ -1,14 +1,16 @@
-import { ProductContext } from "../../Context/ProductContext";
+import { ProductsContext } from "../../Context/ProductContext";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import styles from "./Product.module.css";
-// import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { useContext, useParams } from "react";
 import notice from "../../assets/notice.svg";
+import BannerImageSlide from "../../components/BannerImageSlide/BannerImageSlide";
 
 const Product = () => {
-  const { products } = useContext(ProductContext);
+  const { products } = useContext(ProductsContext);
+  const { productId } = useParams();
   const product = products.find((e) => {
-    e.id === Number(product.id);
+    e.id === Number(productId);
   });
   // const [loading, setLoading] = useState(false);
   // const [errorMsg, setErrorMsg] = useState(null);
@@ -47,22 +49,26 @@ const Product = () => {
   // }
 
   return (
-    <div className={styles.products}>
+    <section className={styles.product}>
       <h1>{product.id}</h1>
-      {/* <h1>Product title</h1> */}
       <div className="top">
-        <img src={product.thumbnail} alt={product.id} />
+        <BannerImageSlide images={product.id} width="694px" height="595px" />
+        {/* <div>
+          <img src={product.thumbnail} alt={product.id} />
+        </div> */}
+
         <div className={styles.buttons}>
-          <CustomButton
-            className={styles["small-btn"]}
-            type="orange"
-            text="Add to Cart"
-            to="/add-to-cart"
-          />
+          <Link to="/add-to-cart">
+            <CustomButton
+              className={styles["small-btn"]}
+              type="orange"
+              text="Add to Cart"
+            />
+          </Link>
 
           <CustomButton
             className={styles["small-btn"]}
-            type="other"
+            type="#3C5A82"
             text="Buy Now"
           />
 
@@ -75,19 +81,27 @@ const Product = () => {
       </div>
       <div className="image-array">
         {product.images.map((item, index) => {
-          <img key={item.id} src={item.thumbnail} alt={`Image ${index}`} />;
+          <img
+            className={styles.thumbnail}
+            key={item.id}
+            src={item.thumbnail}
+            alt={`Image ${index}`}
+          />;
         })}
       </div>
       <div className={styles["product-bottom"]}>
         <p>Product Description</p>
         <div>
-          <div className={styles.description}>
-            <small>{product.title}</small>
-            <small>{product.price}</small>
-            <small>{product.brand}</small>
-            <small>{product.category}</small>
-            <small>{product.stock}</small>
-          </div>
+          <ul className={styles.description}>
+            <li>{product.title}</li>
+            <li>{product.price}</li>
+            <li>{product.brand}</li>
+            <li>{product.category}</li>
+            <li>{product.stock}</li>
+            <div>
+              <li>{product.description}</li>
+            </div>
+          </ul>
           <div className={styles.notice}>
             <img src={notice} alt="notice banner" />
             <small>
@@ -97,7 +111,7 @@ const Product = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
