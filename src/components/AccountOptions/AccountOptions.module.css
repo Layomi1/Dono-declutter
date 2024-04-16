@@ -1,0 +1,34 @@
+.account-left {
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  background-color: #fff;
+  border: 1px solid #3c5a82;
+  text-align: left;
+  width: 100%;
+  display: flex;
+}
+
+.account-left {
+  max-width: 292px;
+  height: 358px;
+  gap: 10px;
+}
+.account-left ul {
+  width: 100%;
+}
+.account-left ul li a {
+  padding: 10px 15px;
+  display: flex;
+  gap: 50px;
+  height: 56px;
+  align-items: center;
+  font-size: var(--small-sixe);
+  color: #000;
+}
+
+.account-left ul li img {
+  width: 28px;
+  height: 20.51px;
+}
+.account-left ul li:active {
+  background-color: var(--steel-blue-color);
+}
