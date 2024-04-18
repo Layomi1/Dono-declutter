@@ -1,52 +1,22 @@
 import { ProductsContext } from "../../Context/ProductContext";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import styles from "./Product.module.css";
-import { Link } from "react-router-dom";
-import { useContext, useParams } from "react";
 import notice from "../../assets/notice.svg";
+import { useContext } from "react";
+import { useParams, Link } from "react-router-dom";
+
 import BannerImageSlide from "../../components/BannerImageSlide/BannerImageSlide";
 
 const Product = () => {
-  const { products } = useContext(ProductsContext);
+  const { products, moveToCart } = useContext(ProductsContext);
   const { productId } = useParams();
   const product = products.find((e) => {
-    e.id === Number(productId);
+    return e.id === Number(productId);
   });
-  // const [loading, setLoading] = useState(false);
-  // const [errorMsg, setErrorMsg] = useState(null);
-  // const [product, setProduct] = useState([]);
 
-  // async function fetchProduct() {
-  //   try {
-  //     setLoading(true);
-  //     const response = await fetch("https://dummyjson.com/products/id");
-  //     const result = await response.json();
-  //     if (result && result.product) {
-  //       setProduct(result.product);
-  //       setLoading(false);
-  //     }
-  //     console.log(result);
-  //   } catch (e) {
-  //     setErrorMsg(e.message);
-  //   }
-  // }
-  // useEffect(() => {
-  //   fetchProduct();
-  // }, []);
-
-  // if (loading) {
-  //   return <div>Loading data ! Please wait</div>;
-  // }
-
-  // if (errorMsg) {
-  //   return <div>Umnable to fetch data!</div>;
-  // }
-  // console.log(product);
-  // let navigate = useNavigate();
-  // function handleCart() {
-  // navigate("/add-to-cart");
-  // window.location.link = "/add-to-cart";
-  // }
+  if (!product) {
+    return <div>Loading...</div>; // or any other appropriate fallback
+  }
 
   return (
     <section className={styles.product}>
@@ -63,20 +33,27 @@ const Product = () => {
               className={styles["small-btn"]}
               type="orange"
               text="Add to Cart"
+              onClick={() => {
+                moveToCart(product.id);
+              }}
             />
           </Link>
 
-          <CustomButton
-            className={styles["small-btn"]}
-            type="#3C5A82"
-            text="Buy Now"
-          />
+          <Link to="/buy">
+            <CustomButton
+              className={styles["small-btn"]}
+              type="other"
+              text="Buy Now"
+            />
+          </Link>
 
-          <CustomButton
-            className={styles["small-btn"]}
-            type="teal"
-            text="Contact Seller"
-          />
+          <Link to="/seller">
+            <CustomButton
+              className={styles["small-btn"]}
+              type="teal"
+              text="Contact Seller"
+            />
+          </Link>
         </div>
       </div>
       <div className="image-array">

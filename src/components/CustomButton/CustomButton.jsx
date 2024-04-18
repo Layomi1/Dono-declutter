@@ -1,28 +1,51 @@
-const CustomButton = ({ type, buttonStyle, text, onClick }) => {
+// import { Link } from "react-router-dom";
+
+// const CustomButton = ({ type, to, buttonStyle, text, onClick }) => {
+//   const classNames = {
+//     orange: "btn",
+//     teal: "btn-teal",
+//     other: "#3c5a82",
+//   };
+//   const className = classNames[type] || classNames.btn;
+
+//   return (
+//     <Link to={to} className={`${className} ${buttonStyle}`}>
+//     {text}
+//   </Link>
+//   );
+// };
+// return (
+//   <button className={`${className} ${buttonStyle}`} onClick={onClick}>
+//       {text}
+//     </button>
+// );
+// };
+
+// export default CustomButton;
+
+import { Link } from "react-router-dom";
+
+const CustomButton = ({ type, to, buttonStyle, text, onClick }) => {
   const classNames = {
     orange: "btn",
     teal: "btn-teal",
     other: "#3c5a82",
   };
   const className = classNames[type] || classNames.btn;
-  const ButtonComponent = onClick ? "button" : "a";
+
+  if (to) {
+    return (
+      <Link to={to} className={`${className} ${buttonStyle}`}>
+        {text}
+      </Link>
+    );
+  }
+
   return (
-    <ButtonComponent
-      to="#" // This will be ignored if ButtonComponent is 'button'
-      className={`${className} ${buttonStyle}`}
-      onClick={onClick} // This will be ignored if ButtonComponent is 'a'
-    >
+    <button className={`${className} ${buttonStyle}`} onClick={onClick}>
       {text}
-    </ButtonComponent>
+    </button>
   );
 };
-// return onClick ? (
-//   <button className={`${className} ${buttonStyle}`}>{text}</button>
-// ) : (
-//   <a href="#" className={`${className} ${buttonStyle}`}>
-//     {text}
-//   </a>
-// );
-// };
 
 export default CustomButton;

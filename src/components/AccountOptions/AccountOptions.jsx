@@ -1,4 +1,4 @@
-import { Link } from "react";
+import { Link } from "react-router-dom";
 import ad_icon from "../../assets/ad_icon.png";
 import user_icon from "../../assets/user_icon.png";
 import order_icon from "../../assets/order_icon.png";

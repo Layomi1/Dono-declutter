@@ -20,7 +20,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (noteListRef.current && !noteListRef.contains(e.target)) {
+      if (noteListRef.current && !noteListRef.current.contains(e.target)) {
         setIsOpenNote(false);
       }
     };

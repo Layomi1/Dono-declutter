@@ -16,15 +16,17 @@ import Paystack from "./Pages/Paystacjk/Paystack";
 import Order from "./Pages/Order/Order";
 import Advert from "./Pages/Advert/Advert";
 import Recent from "./Pages/Recent/Recent";
+import ErrorBoundary from "./components/ComponentDidCatch";
 
 function App() {
   return (
-    <>
+    <ErrorBoundary>
       <Navbar />
       <SecondaryNavbar />
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/products/:id" element={<Product />} />
+        {/* <Route path="/products/:id" element={<Product />} /> */}
+        <Route path="/productId" element={<Product />} />
         <Route path="/sell" element={<Sell />} />
         <Route path="/donate" element={<Donate />} />
         <Route path="/login" element={<Login />} />
@@ -39,7 +41,7 @@ function App() {
         <Route path="/pay" element={<Paystack />} />
       </Routes>
       <Footer />
-    </>
+    </ErrorBoundary>
   );
 }
 

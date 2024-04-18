@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import ErrorBoundary from "../components/ComponentDidCatch";
 
 export const ProductsContext = createContext(null);
 const ProductsContextProvider = ({ children }) => {
@@ -6,6 +7,15 @@ const ProductsContextProvider = ({ children }) => {
   const [errorMsg, setErrorMsg] = useState(null);
   const [products, setProducts] = useState([]);
   const [count, setCount] = useState(0);
+
+  const getDefaultCart = () => {
+    let cart = {};
+    for (let index = 0; index < products.length + 1; index++) {
+      cart[index] = 0;
+    }
+    return cart;
+  };
+  const [cartItems, setCartItems] = useState(getDefaultCart());
 
   async function fetchProducts() {
     try {
@@ -37,16 +47,30 @@ const ProductsContextProvider = ({ children }) => {
     return <div>Umnable to fetch data!</div>;
   }
   console.log(products);
+
+  const moveToCart = (itemId) => {
+    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+    console.log(cartItems);
+  };
+  const removeFromCart = (itemId) => {
+    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
+  };
+
   return (
-    <ProductsContext.Provider
-      value={{
-        products,
-        loading,
-        errorMsg,
-      }}
-    >
-      {children}
-    </ProductsContext.Provider>
+    <ErrorBoundary>
+      <ProductsContext.Provider
+        value={{
+          products,
+          loading,
+          errorMsg,
+          cartItems,
+          moveToCart,
+          removeFromCart,
+        }}
+      >
+        {children}
+      </ProductsContext.Provider>
+    </ErrorBoundary>
   );
 };
 
