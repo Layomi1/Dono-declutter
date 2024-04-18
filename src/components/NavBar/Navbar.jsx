@@ -20,7 +20,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (noteListRef.current && !noteListRef.contains(e.target)) {
+      if (noteListRef.current && !noteListRef.current.contains(e.target)) {
         setIsOpenNote(false);
       }
     };
@@ -28,7 +28,7 @@ const Navbar = () => {
     document.addEventListener("click", handleClickOutside);
 
     return () => {
-      document.addEventListener("click", handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
@@ -125,7 +125,7 @@ const Navbar = () => {
             <ul
               ref={noteListRef}
               className={`${styles["note-lists"]} ${
-                openNote ? styles["show-menu"] : styles[""]
+                openNote ? styles["show-note"] : styles[""]
               }`}
             >
               <li>Your Ad is under review</li>

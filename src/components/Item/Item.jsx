@@ -1,7 +1,7 @@
 import styles from "./Item.module.css";
 import { Link } from "react-router-dom";
 
-const Item = ({ thumbnail, title, price }) => {
+const Item = ({ thumbnail, title, price, id }) => {
   return (
     <div className={styles.item}>
       <img src={thumbnail} alt="" />
@@ -13,7 +13,7 @@ const Item = ({ thumbnail, title, price }) => {
         </div>
 
         <div className={styles["view-link"]}>
-          <Link to="/product/:id">View</Link>
+          <Link to={`products/${id}`}>View</Link>
         </div>
       </div>
     </div>

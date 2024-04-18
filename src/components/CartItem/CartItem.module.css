@@ -1,0 +1,22 @@
+.cart-item {
+  padding: var(--app-padding);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.card {
+  padding: 5px 20px 5px;
+  max-width: 1118.93%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  gap: 30px;
+  border: 1px solid #3c5a82;
+  filter: drop-shadow(2px, 0px, 0, 0 rgba(0, 0, 0, 0.4));
+}
+
+.card img {
+  width: 100%;
+  max-width: 122.87px;
+  height: 121.34px;
+}
