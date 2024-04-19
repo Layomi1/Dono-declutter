@@ -29,7 +29,7 @@ const CustomButton = ({ type, to, buttonStyle, text, onClick }) => {
   const classNames = {
     orange: "btn",
     teal: "btn-teal",
-    other: "#3c5a82",
+    "#96C3D7": "btn-96C3D7",
   };
   const className = classNames[type] || classNames.btn;
 

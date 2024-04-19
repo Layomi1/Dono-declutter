@@ -30,7 +30,6 @@ const ProductsContextProvider = ({ children }) => {
         setProducts(result.products);
         setLoading(false);
       }
-      console.log(result);
     } catch (e) {
       setErrorMsg(e.message);
     }
@@ -44,13 +43,11 @@ const ProductsContextProvider = ({ children }) => {
   }
 
   if (errorMsg) {
-    return <div>Umnable to fetch data!</div>;
+    return <div>Unable to fetch data!</div>;
   }
-  console.log(products);
 
   const moveToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-    console.log(cartItems);
   };
   const removeFromCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));

@@ -18,7 +18,6 @@ const ProductList = () => {
         }`
       );
       const result = await response.json();
-      console.log(result);
       if (result && result.products) {
         setProducts(result.products);
         setLoading(false);
@@ -53,6 +52,7 @@ const ProductList = () => {
                 thumbnail={item.thumbnail}
                 title={item.title}
                 price={item.price}
+                productId={item.id}
                 className={styles.item}
               />
             ))

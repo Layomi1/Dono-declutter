@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./BannerImageSlide.module.css";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-function BannerImageSlide({ images, width, height }) {
+function BannerImageSlide({ images }) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   function handleNext() {
@@ -11,11 +11,10 @@ function BannerImageSlide({ images, width, height }) {
   }
   function handlePrevious() {
     setCurrentSlide(currentSlide === 0 ? images.length - 1 : currentSlide - 1);
-    console.log("prev");
   }
 
   return (
-    <div className={styles.container} width={width} height={height}>
+    <div className={styles.container}>
       <FaChevronLeft
         onClick={handlePrevious}
         className={`${styles.arrow} ${styles["arrow-left"]}`}
