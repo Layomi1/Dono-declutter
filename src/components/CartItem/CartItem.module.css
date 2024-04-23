@@ -1,22 +1,75 @@
-.cart-item {
+.cart {
   padding: var(--app-padding);
   display: flex;
-  align-items: center;
-  gap: 20px;
+  flex-direction: column;
+  gap: 50px;
 }
+.cart-item {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100px;
+  height: 116.38px;
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  accent-color: red;
+}
+
 .card {
   padding: 5px 20px 5px;
-  max-width: 1118.93%;
+  width: 100%;
+  max-width: 1098.93px;
+  height: 116.38px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   align-items: center;
-  gap: 30px;
+  gap: 50px;
   border: 1px solid #3c5a82;
-  filter: drop-shadow(2px, 0px, 0, 0 rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(2px 0px 0 0 rgba(0, 0, 0, 0.6));
 }
 
 .card img {
   width: 100%;
   max-width: 122.87px;
   height: 121.34px;
+}
+
+.all {
+  display: flex;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.payment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1098.93px;
+}
+
+.payment p {
+  font-size: var(--button-size);
+  font-weight: bold;
+}
+
+.payment-inner {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.small-btn {
+  width: 177.26px;
 }
