@@ -2,11 +2,13 @@ import CustomButton from "../CustomButton/CustomButton";
 import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
 import { RiMenuLine } from "react-icons/ri";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
+import { ProductsContext } from "../../Context/ProductContext";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openNote, setIsOpenNote] = useState(false);
+  const { getTotalCartItems } = useContext(ProductsContext);
 
   function toggleMenu() {
     setIsMenuOpen(!isMenuOpen);
@@ -85,7 +87,7 @@ const Navbar = () => {
       <RiMenuLine className={styles.menu} onClick={toggleMenu} />
 
       <div className={styles["nav-icons"]}>
-        <Link to="/add-to-cart" className={styles.basket}>
+        <Link to="/cart" className={styles.basket}>
           <svg
             width="56"
             height="66"
@@ -102,7 +104,7 @@ const Navbar = () => {
               fill="black"
             />
           </svg>
-          <span className={styles.count}>0</span>
+          <span className={styles.count}>{getTotalCartItems()}</span>
         </Link>
 
         {/* bell */}
